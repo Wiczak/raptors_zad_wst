@@ -15,11 +15,10 @@ void RaptorNode::chatterCallback(const std_msgs::String::ConstPtr& msg) {
 }
 
 std::string RaptorNode::getTimestamp() {
-    time_t now = time(0);
-    tm* timeinfo = localtime(&now);
-    char timestamp[80];
-    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", timeinfo);
-    return timestamp;
+    ros::Time currtime = ros::Time::now();
+    std::ostringstream stime;
+    stime << currtime;
+    return stime.str();
 }
 
 
